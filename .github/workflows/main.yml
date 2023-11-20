@@ -1,0 +1,47 @@
+# i want this work flows to be trigger for following
+#   pull request on main, master
+#   push request to master, main, develop
+# in name, we define name of workflow:
+# in jobs, we define, which will be releasing as part of this work flows
+# macos-latest means we will do for IOS, and ios will build on macos
+# steps means, we provide steps which will be triggered before making bundle
+
+# in secrets.TOKEN, the word TOKEN should be same as token on settings/securit/actions/repository
+
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+  push:
+    branches:
+      - main
+      - master
+      - develop
+name: "Build & Release"
+jobs:
+  build:
+    name: Build & Release
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - uses: subosite/flutter-action@v1
+        with:
+          flutter-version: '3.16.4'
+      - run: flutter pub get
+      - run: flutter test
+      - run: flutter build apk --debug --split-per-abi
+      - name: Push to Releases
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/apk/outputs/apk/debug/*"
+          tag: v1.0.${{ github.run_number }}
+          token: ${{ secrets.TOKEN }}
+
+
+
+
+
