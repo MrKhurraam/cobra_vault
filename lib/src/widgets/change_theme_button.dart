@@ -9,21 +9,16 @@ class ChangeThemeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
 
-
     return CircleAvatar(
       radius: 16,
-      backgroundColor: Theme
-          .of(context)
-          .cardColor,
+      backgroundColor: Theme.of(context).cardColor,
       child: IconButton(
         highlightColor: Colors.transparent,
         splashColor: Colors.transparent,
-        color: Theme
-            .of(context)
-            .primaryColor,
+        color: Theme.of(context).primaryColor,
         onPressed: () {
           themeProvider.setThemeMode =
-          themeProvider.isDarkMode ? ThemeMode.light : ThemeMode.dark;
+              themeProvider.isDarkMode ? ThemeMode.light : ThemeMode.dark;
         },
         icon: Icon(
           themeProvider.isDarkMode

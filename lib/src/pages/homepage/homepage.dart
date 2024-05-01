@@ -14,42 +14,6 @@ import 'components/storage_card.dart';
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
-  // getGalleryImageSize() async {
-  //   final PermissionState _ps = await PhotoManager.requestPermissionExtend();
-  //   if (_ps.isAuth) {
-  //     // Granted.
-  //     final List<AssetPathEntity> paths = await PhotoManager.getAssetPathList();
-  //     paths.forEach((element) {
-  //       print("element = ${element.fetchPathProperties()}");
-  //     });
-  //     // print("orig paths = ${paths.length}");
-  //   } else {
-  //     // Limited(iOS) or Rejected, use `==` for more precise judgements.
-  //     // You can call `PhotoManager.openSetting()` to open settings for further steps.
-  //   }
-  //
-  //   // int imageSize = 0;
-  //   // final Directory? galleryDirectory =
-  //   //     await getApplicationDocumentsDirectory(); // Change to your gallery directory
-  //   // print("galleryDirectory = $galleryDirectory");
-  //   // try {
-  //   //   final List<FileSystemEntity>? files =
-  //   //       galleryDirectory!.listSync(recursive: true);
-  //   //   print("files = $files");
-  //   //   for (FileSystemEntity entity in files!) {
-  //   //     if (entity is File &&
-  //   //         (entity.path.endsWith('.jpg') || entity.path.endsWith('.png'))) {
-  //   //       imageSize += await entity.length();
-  //   //       print("imageSize = $imageSize");
-  //   //     }
-  //   //   }
-  //   // } catch (e) {
-  //   //   print(e.toString());
-  //   // }
-  //
-  //   // return imageSize;
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,15 +23,10 @@ class HomePage extends StatelessWidget {
           left: 10,
           right: 10,
         ),
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
+        child: const SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           child: Column(
             children: [
-              ElevatedButton(
-                  onPressed: () {
-                    // getGalleryImageSize();
-                  },
-                  child: Text("check sze")),
               GalleryGrid(),
               StorageDetails(),
               CloudBackup(),

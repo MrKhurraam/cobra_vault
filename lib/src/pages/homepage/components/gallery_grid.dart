@@ -10,7 +10,7 @@ class GalleryGrid extends StatelessWidget {
     double w = MediaQuery.of(context).size.width;
 
     return GridView.count(
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       crossAxisCount: 2,
       children: List.generate(Utils.galleryList.length, (index) {

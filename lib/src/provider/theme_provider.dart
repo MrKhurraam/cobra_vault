@@ -34,7 +34,7 @@ class MyThemes {
     ),
     backgroundColor: Color(0xFF6D6D6D),
     iconTheme: const IconThemeData(color: Color(0xFFF5F5F5), size: 25),
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       headline1: TextStyle(
         color: Color(0xFFFFFFFF),
         fontSize: 28,
